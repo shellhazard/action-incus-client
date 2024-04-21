@@ -5,8 +5,6 @@ description: Set up Incus on a Github Runner in Ubuntu.
 inputs:
   remote_host:
     required: false
-
-secrets:
   # Generate these locally and copy them from ~/.config/incus.
   # Delete and regenerate them afterwards; you should be using a separate set of certs in CI.
   incus_client_cert:
@@ -28,8 +26,8 @@ runs:
     - name: Place certificates in expected location
       shell: bash
       run: |
-        echo ${{ secrets.incus_client_cert }} | tee ~/.config/client.crt
-        echo ${{ secrets.incus_client_key }} | tee ~/.config/client.key
+        echo ${{ inputs['incus_client_cert'] }} | tee ~/.config/client.crt
+        echo ${{ inputs['incus_client_key'] }} | tee ~/.config/client.key
     
     - name: Add user to incus-admin group
       shell: bash
@@ -40,4 +38,4 @@ runs:
     - name: Add remote if specified
       shell: bash
       run: |
-        [[ "${{ inputs.remote_host }}" = true ]] && incus remote add ${{ inputs.remote_host }} --accept-certificate
+        [[ "${{ inputs['remote_host'] }}" = true ]] && incus remote add ${{ inputs.remote_host }} --accept-certificate
