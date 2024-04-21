@@ -1,0 +1,22 @@
+name: "Test action-incus"
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - ubuntu-20.04
+          - ubuntu-18.04
+          - ubuntu-16.04
+        incus_version:
+          - latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run ${{ github.repository }}@${{ github.sha }}
+        uses: ./
+
