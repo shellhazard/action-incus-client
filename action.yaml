@@ -54,13 +54,6 @@ runs:
         echo "Storing certificates.."
         echo "${{ inputs['incus_client_cert'] }}" >> ~/.config/client.crt
         echo "${{ inputs['incus_client_key'] }}" >> ~/.config/client.key
-    
-    - name: Add user to incus-admin group
-      shell: bash
-      run: |
-        echo "Adding $USER to incus-admin.."
-        sudo adduser $USER incus-admin
-        newgrp incus-admin
 
     - name: Add remote if specified
       if: "${{ inputs['remote_host'] != '' }}"
