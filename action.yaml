@@ -55,9 +55,9 @@ runs:
         echo "${{ inputs['incus_client_cert'] }}" >> ~/.config/client.crt
         echo "${{ inputs['incus_client_key'] }}" >> ~/.config/client.key
 
-    - name: Add remote if specified
-      if: "${{ inputs['remote_host'] != '' }}"
-      shell: bash
-      run: |
-        echo "Connecting to remote.."
-        incus remote add "${{ inputs.remote_host }}" --accept-certificate
+    # - name: Add remote if specified
+    #   if: "${{ inputs['remote_host'] != '' }}"
+    #   shell: bash
+    #   run: |
+    #     echo "Connecting to remote.."
+    #     incus remote add "${{ inputs.remote_host }}" --accept-certificate
