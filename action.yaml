@@ -3,6 +3,8 @@ author: shellhazard
 description: Set up Incus on a Github Runner in Ubuntu.
 
 inputs:
+  remote_name:
+    required: false
   remote_host:
     required: false
   # Generate these locally and copy them from ~/.config/incus.
@@ -61,4 +63,4 @@ runs:
       shell: bash
       run: |
         echo "Connecting to remote.."
-        incus remote add "${{ inputs.remote_host }}" --accept-certificate
+        incus remote add "${{ inputs.remote_name }}" "${{ inputs.remote_host }}" --accept-certificate
