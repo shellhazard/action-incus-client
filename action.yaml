@@ -60,4 +60,4 @@ runs:
       shell: bash
       run: |
         echo "Connecting to remote.."
-        sudo incus remote add "${{ inputs.remote_host }}" --accept-certificate
+        incus remote add "${{ inputs.remote_host }}" --accept-certificate
