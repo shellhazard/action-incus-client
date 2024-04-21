@@ -30,8 +30,14 @@ runs:
       run: |
         echo ${{ secrets.incus_client_cert }} | tee ~/.config/client.crt
         echo ${{ secrets.incus_client_key }} | tee ~/.config/client.key
+    
+    - name: Add user to incus-admin group
+      shell: bash
+      run: |
+        sudo adduser $USER incus-admin
+        newgrp incus-admin
 
     - name: Add remote if specified
       shell: bash
       run: |
-        [[ "${{ inputs.remote_host }}" = true ]] && sudo incus remote add ${{ inputs.remote_host }} --accept-certificate
+        [[ "${{ inputs.remote_host }}" = true ]] && incus remote add ${{ inputs.remote_host }} --accept-certificate
