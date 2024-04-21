@@ -30,13 +30,13 @@ To generate a new certificate pair, run on the Incus server to get a token:
 incus config trust add gha-runner
 ```
 
-Now you'll need another machine with Incus client installed and a network path to your server. If you're already authenticated with your server, you'll want to move your certificate temporarily:
+Now you'll need another machine with Incus client installed and a network path to your server. If you're already authenticated, you'll want to move your certificate temporarily:
 ```sh
 mv ~/.config/incus/client.crt ~/.config/incus/client.real.crt
 mv ~/.config/incus/client.key ~/.config/incus/client.key.crt
 ```
 
-Then you can run the following to regenerate them:
+Then run the following to regenerate them:
 ```sh
 incus remote add temp --token=<output of above> --accept-certificates
 ```
