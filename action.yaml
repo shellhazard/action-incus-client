@@ -52,6 +52,7 @@ runs:
       shell: bash
       run: |
         echo "Storing certificates.."
+        mkdir -p ~/.config/incus
         echo "${{ inputs['incus_client_cert'] }}" >> ~/.config/incus/client.crt
         echo "${{ inputs['incus_client_key'] }}" >> ~/.config/incus/client.key
 
