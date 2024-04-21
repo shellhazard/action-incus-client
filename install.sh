@@ -31,6 +31,6 @@ EOF'
 
 # Install Incus.
 apt-get update
-apt-get install incus --yes --no-install-recommends
+apt-get install incus-client --yes --no-install-recommends
 
 exit 0
