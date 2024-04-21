@@ -69,7 +69,7 @@ provider "incus" {
 ```
 
 ### Notes on Terraform Cloud
-- If you are using Terraform Cloud, the execution mode for your workspace must be set to Local as the machine state of the runner is required for this action to work; i.e. your runner should be using the [Setup Terraform](https://github.com/hashicorp/setup-terraform) action and doing all the work itself, and TFC is exclusively for state.
+- If you are using Terraform Cloud, the execution mode for your workspace must be set to Local as the machine state of the runner is required for this action to work; i.e. your runner should be using the [Setup Terraform](https://github.com/hashicorp/setup-terraform) action and doing all the work itself, using TFC exclusively for state.
 - If you're using the remote execution mode - you don't need this action, but there are some caveats that weren't obvious to me upfront:
   - Passing a token to the provider as [suggested in the provider documentation](https://registry.terraform.io/providers/lxc/incus/latest/docs) will lead to a misleading success on the first run, but failures in subsequent runs, as the token is consumed once the client certificates are generated. TFC runners are ephemeral so these certificates are lost after the run ends.
   - Instead, you should be able to use the [Local File](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) provisioner to create the expected certificates at `~/.config/incus/client.crt` and `~/.config/incus/client.key`.
