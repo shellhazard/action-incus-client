@@ -52,8 +52,8 @@ runs:
       shell: bash
       run: |
         echo "Storing certificates.."
-        echo ${{ inputs['incus_client_cert'] }} | tee ~/.config/client.crt
-        echo ${{ inputs['incus_client_key'] }} | tee ~/.config/client.key
+        echo "${{ inputs['incus_client_cert'] }}" | tee ~/.config/client.crt
+        echo "${{ inputs['incus_client_key'] }}" | tee ~/.config/client.key
     
     - name: Add user to incus-admin group
       shell: bash
@@ -67,4 +67,4 @@ runs:
       shell: bash
       run: |
         echo "Connecting to remote.."
-        sudo incus remote add ${{ inputs.remote_host }} --accept-certificate
+        sudo incus remote add "${{ inputs.remote_host }}" --accept-certificate
