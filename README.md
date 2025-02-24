@@ -30,7 +30,7 @@ incus config trust add gha-runner
 Now you'll need another machine with Incus client installed and a network path to your server. If you're already authenticated, you'll want to move your certificate temporarily:
 ```sh
 mv ~/.config/incus/client.crt ~/.config/incus/client.real.crt
-mv ~/.config/incus/client.key ~/.config/incus/client.key.crt
+mv ~/.config/incus/client.key ~/.config/incus/client.real.key
 ```
 
 Then run the following to regenerate them:
